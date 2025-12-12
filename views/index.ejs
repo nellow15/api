@@ -1,0 +1,81 @@
+<%- include('partials/header', { title: 'ShardoX API - Professional WhatsApp Bot API' }) %>
+
+<div class="hero">
+    <div class="container">
+        <h1>ShardoX API</h1>
+        <p>Professional WhatsApp Bot API service with enterprise-grade features. Build powerful automation workflows with our REST API.</p>
+        <div style="margin-top: 2rem;">
+            <a href="/api-docs" class="btn">Get Started</a>
+            <a href="https://github.com/yourusername/shardox-api" class="btn btn-outline" style="margin-left: 1rem;">View on GitHub</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card-grid">
+        <div class="card">
+            <h3>Message Sending</h3>
+            <p>Send text, media, and documents to any WhatsApp number with reliable delivery.</p>
+            <a href="/api-docs#send" class="btn btn-outline">Learn More</a>
+        </div>
+        
+        <div class="card">
+            <h3>Group Management</h3>
+            <p>Create, manage, and moderate WhatsApp groups programmatically.</p>
+            <a href="/api-docs#groups" class="btn btn-outline">Learn More</a>
+        </div>
+        
+        <div class="card">
+            <h3>Contact Management</h3>
+            <p>Retrieve contacts, check number validity, and manage your contact list.</p>
+            <a href="/api-docs#contacts" class="btn btn-outline">Learn More</a>
+        </div>
+        
+        <div class="card">
+            <h3>Real-time Status</h3>
+            <p>Monitor your WhatsApp connection status and message delivery in real-time.</p>
+            <a href="/api-docs#status" class="btn btn-outline">Learn More</a>
+        </div>
+    </div>
+
+    <section style="margin: 4rem 0;">
+        <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 300;">Getting Started</h2>
+        
+        <div class="code-block">
+            <pre><code># Install the client library
+npm install shardox-api
+
+# Or use directly with curl
+curl -X POST https://shardox-api.vercel.app/api/whatsapp/send \
+  -H "Content-Type: application/json" \
+  -d '{
+    "apiKey": "your-api-key",
+    "to": "6281234567890",
+    "message": "Hello from ShardoX API"
+  }'</code></pre>
+        </div>
+    </section>
+
+    <section style="margin: 4rem 0;">
+        <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 300;">Features</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+            <div style="padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px;">
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">High Performance</h3>
+                <p style="color: var(--light-gray);">Built on Node.js and optimized for Vercel's serverless platform.</p>
+            </div>
+            
+            <div style="padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px;">
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Secure</h3>
+                <p style="color: var(--light-gray);">API key authentication and encrypted data transmission.</p>
+            </div>
+            
+            <div style="padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px;">
+                <h3 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 500;">Scalable</h3>
+                <p style="color: var(--light-gray);">Automatic scaling to handle any volume of requests.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<%- include('partials/footer') %>

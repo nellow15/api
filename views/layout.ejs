@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || 'ShardoX API' %></title>
+    <meta name="description" content="Professional WhatsApp Bot API Service">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/public/images/logo.svg">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar container">
+            <a href="/" class="logo">ShardoX API</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/api-docs">API Documentation</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="https://github.com/yourusername/shardox-api" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <%- body %>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ShardoX API</h4>
+                    <p>Professional WhatsApp Bot API Service</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/api-docs">Documentation</a></li>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/status">Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://github.com/yourusername/shardox-api">GitHub Repository</a></li>
+                        <li><a href="https://vercel.com">Powered by Vercel</a></li>
+                        <li><a href="mailto:support@shardox.api">Contact Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 ShardoX API. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/public/js/main.js"></script>
+</body>
+</html>

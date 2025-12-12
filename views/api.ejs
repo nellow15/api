@@ -1,0 +1,123 @@
+<%- include('partials/header', { title: 'API Documentation - ShardoX API' }) %>
+
+<div class="container" style="padding: 3rem 0;">
+    <h1 style="font-size: 2.5rem; margin-bottom: 1rem; font-weight: 300;">API Documentation</h1>
+    <p style="color: var(--light-gray); margin-bottom: 2rem;">Complete reference for ShardoX WhatsApp Bot API endpoints.</p>
+    
+    <div style="margin-bottom: 3rem;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 300;">Authentication</h2>
+        <p style="color: var(--light-gray); margin-bottom: 1rem;">All API requests require an API key in the request body or query parameter.</p>
+        
+        <div class="code-block">
+            <pre><code>{
+  "apiKey": "your-secret-api-key-here"
+}</code></pre>
+        </div>
+    </div>
+    
+    <div style="margin-bottom: 3rem;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 300;" id="send">Send Message</h2>
+        
+        <div class="endpoint">
+            <span class="method method-post">POST</span>
+            <span class="path">/api/whatsapp/send</span>
+            <p class="description">Send a message to a WhatsApp number.</p>
+            
+            <h3 style="margin: 1rem 0 0.5rem 0; font-size: 1.1rem;">Request Body</h3>
+            <div class="code-block">
+                <pre><code>{
+  "apiKey": "string",
+  "to": "string",           // Phone number (e.g., "6281234567890")
+  "message": "string",      // Message content
+  "type": "text",          // "text", "media", or "document"
+  "mediaUrl": "string"     // Required for media/document types
+}</code></pre>
+            </div>
+            
+            <h3 style="margin: 1rem 0 0.5rem 0; font-size: 1.1rem;">Response</h3>
+            <div class="code-block">
+                <pre><code>{
+  "success": true,
+  "message": "Message sent successfully",
+  "data": {
+    "messageId": "string",
+    "timestamp": 1234567890,
+    "to": "string",
+    "from": "string",
+    "type": "string"
+  }
+}</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-bottom: 3rem;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 300;" id="groups">Group Management</h2>
+        
+        <div class="endpoint">
+            <span class="method method-post">POST</span>
+            <span class="path">/api/whatsapp/group</span>
+            <p class="description">Create a new WhatsApp group.</p>
+            
+            <div class="code-block">
+                <pre><code>{
+  "apiKey": "string",
+  "name": "string",
+  "participants": ["6281234567890", "6289876543210"]
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="endpoint" style="margin-top: 1rem;">
+            <span class="method method-get">GET</span>
+            <span class="path">/api/whatsapp/group?apiKey=your-api-key</span>
+            <p class="description">Retrieve all groups.</p>
+        </div>
+    </div>
+    
+    <div style="margin-bottom: 3rem;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 300;" id="contacts">Contact Management</h2>
+        
+        <div class="endpoint">
+            <span class="method method-get">GET</span>
+            <span class="path">/api/whatsapp/contacts?apiKey=key&limit=50&offset=0</span>
+            <p class="description">Get contacts with pagination.</p>
+        </div>
+        
+        <div class="endpoint" style="margin-top: 1rem;">
+            <span class="method method-post">POST</span>
+            <span class="path">/api/whatsapp/contacts/check</span>
+            <p class="description">Check if a phone number is registered on WhatsApp.</p>
+            
+            <div class="code-block">
+                <pre><code>{
+  "apiKey": "string",
+  "number": "6281234567890"
+}</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-bottom: 3rem;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 300;" id="status">Status & Health</h2>
+        
+        <div class="endpoint">
+            <span class="method method-get">GET</span>
+            <span class="path">/api/whatsapp/status?apiKey=your-api-key</span>
+            <p class="description">Check WhatsApp connection status.</p>
+        </div>
+        
+        <div class="endpoint" style="margin-top: 1rem;">
+            <span class="method method-get">GET</span>
+            <span class="path">/api/health</span>
+            <p class="description">API health check endpoint.</p>
+        </div>
+    </div>
+    
+    <div style="background-color: var(--secondary-black); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; font-weight: 300;">Rate Limiting</h2>
+        <p style="color: var(--light-gray);">API requests are limited to 100 requests per 15 minutes per IP address.</p>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

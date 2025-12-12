@@ -1,0 +1,130 @@
+<%- include('partials/header', { title: 'Dashboard - ShardoX API' }) %>
+
+<div class="container" style="padding: 2rem 0;">
+    <h1 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 300;">Dashboard</h1>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value" id="messagesSent">0</div>
+            <div class="stat-label">Messages Sent</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-value" id="apiCalls">0</div>
+            <div class="stat-label">API Calls</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-value" id="uptime">100%</div>
+            <div class="stat-label">Uptime</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-value" id="responseTime">0ms</div>
+            <div class="stat-label">Avg Response Time</div>
+        </div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 3rem;">
+        <div>
+            <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 300;">Send Test Message</h2>
+            
+            <form id="sendForm" style="background-color: var(--secondary-black); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div class="form-group">
+                    <label class="form-label">API Key</label>
+                    <input type="text" class="form-control" id="apiKey" required placeholder="Enter your API key">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" id="toNumber" required placeholder="6281234567890">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Message Type</label>
+                    <select class="form-control form-select" id="messageType">
+                        <option value="text">Text</option>
+                        <option value="media">Media</option>
+                        <option value="document">Document</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="mediaUrlGroup" style="display: none;">
+                    <label class="form-label">Media URL</label>
+                    <input type="text" class="form-control" id="mediaUrl" placeholder="https://example.com/image.jpg">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="4" required placeholder="Enter your message here"></textarea>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+            </form>
+            
+            <div id="responseArea" style="margin-top: 1rem;"></div>
+        </div>
+        
+        <div>
+            <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 300;">API Status</h2>
+            
+            <div style="background-color: var(--secondary-black); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--light-gray);">WhatsApp Connection</h3>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div style="width: 10px; height: 10px; border-radius: 50%; background-color: var(--success);" id="statusIndicator"></div>
+                        <span id="statusText">Connected</span>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--light-gray);">API Health</h3>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div style="width: 10px; height: 10px; border-radius: 50%; background-color: var(--success);"></div>
+                        <span>Healthy</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--light-gray);">Quick Actions</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <button class="btn btn-outline" onclick="checkStatus()" style="width: 100%; text-align: left;">Check Status</button>
+                        <button class="btn btn-outline" onclick="testConnection()" style="width: 100%; text-align: left;">Test Connection</button>
+                        <button class="btn btn-outline" onclick="getContacts()" style="width: 100%; text-align: left;">Get Contacts</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background-color: var(--secondary-black); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 2rem;">
+                <h3 style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: 500;">Recent Activity</h3>
+                <div id="activityLog" style="font-size: 0.9rem; color: var(--light-gray);">
+                    <div>No recent activity</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 3rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 300;">API Usage History</h2>
+        <div style="overflow-x: auto;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Endpoint</th>
+                        <th>Status</th>
+                        <th>Response Time</th>
+                    </tr>
+                </thead>
+                <tbody id="usageTable">
+                    <tr>
+                        <td colspan="4" style="text-align: center; color: var(--light-gray);">No usage data available</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="/public/js/dashboard.js"></script>
+<%- include('partials/footer') %>
